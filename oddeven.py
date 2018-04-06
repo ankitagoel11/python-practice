@@ -1,4 +1,4 @@
-number = int(input("Please typr the number "))
+number = int(input("Please type the number you want to test eveen or odd"))
 # check if it is divisible by 3
 if number % 2 == 0:
     print("this number is even")
