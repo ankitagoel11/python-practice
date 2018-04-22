@@ -1,2 +1,2 @@
 # python-practice
-practicing to become a python pro
+Practicing algorithm problems and basics to become a python pro.
