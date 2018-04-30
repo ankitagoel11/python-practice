@@ -19,3 +19,23 @@ Solution: SELECT last_name, first_name FROM sakila.actor WHERE last_name LIKE "%
 * 2d. Using `IN`, display the `country_id` and `country` columns of the following countries: Afghanistan, Bangladesh, and China:
 Solution: SELECT country_id, country FROM sakila.country
 WHERE country IN ('Afghanistan', 'Bangladesh', 'China');
+
+* 3a. Add a `middle_name` column to the table `actor`. Position it between `first_name` and `last_name`. Hint: you will need to specify the data type.
+Solution: ALTER table sakila.actor Add column middle_name CHAR(20) AFTER first_name;
+  	
+* 3b. You realize that some of these actors have tremendously long last names. Change the data type of the `middle_name` column to `blobs`. 
+Solution: ALTER TABLE sakila.actor MODIFY COLUMN middle_name blob # there is nothing as blobs.
+
+* 3c. Now delete the `middle_name` column.
+Solution: ALTER table actor DROP middle_name;
+
+* 4a. List the last names of actors, as well as how many actors have that last name.
+Solution: SELECT last_name, COUNT(last_name)  FROM sakila.actor GROUP BY last_name;
+  	
+* 4b. List last names of actors and the number of actors who have that last name, but only for names that are shared by at least two actors
+Solution: SELECT last_name, COUNT(last_name)  FROM sakila.actor GROUP BY last_name HAVING COUNT(last_name) > 1;
+
+
+* 4c. Oh, no! The actor `HARPO WILLIAMS` was accidentally entered in the `actor` table as `GROUCHO WILLIAMS`, the name of Harpo's second cousin's husband's yoga teacher. Write a query to fix the record.
+
+Solution: Update sakila.actor SET first_name = 'HARPO' WHERE last_name LIKE "WILLIAMS" AND first_name like "GROUCHO";
